@@ -1,17 +1,19 @@
 {
   "name": "short_url",
   "version": "1.0.0",
-  "description": "",
+  "description": "A secure URL shortener REST API built with Node.js, Express.js, and MongoDB.",
   "type": "commonjs",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "mocha"
+  },
+  "engines": {
+    "node": "24.x"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
-    "crypto": "^1.0.1",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-rate-limit": "^8.7.0",

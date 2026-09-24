@@ -35,7 +35,8 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre("save", async function () {
   if (!this.isModified("password")) return;
-  const passwordHash = await bcrypt.hash(this.password, 12);
+  const saltRounds = process.env.NODE_ENV === "test" ? 4 : 12;
+  const passwordHash = await bcrypt.hash(this.password, saltRounds);
   this.password = passwordHash;
 });
 
