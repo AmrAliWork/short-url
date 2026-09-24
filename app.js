@@ -8,7 +8,18 @@ const openRoute = require("./routes/openRoute");
 const errorHandler = require("./middlewares/errorMiddleware");
 
 const app = express();
+const connectDB = require("./utils/db");
 
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV !== "DEVELOPMENT")
+  app.use(async (req, res, next) => {
+    try {
+      await connectDB();
+      next();
+    } catch (err) {
+      next(err);
+    }
+  });
 app.use(cors());
 
 app.use(helmet());
